@@ -28,22 +28,27 @@ while (!(key == sk_Clear)){
 		buffer[i] = 0;
 		gfx_PrintStringXY(buffer, 23,211);
     }
-
 	 if (key == sk_Enter){
-	 		if (strcmp(buffer, "stat") == 0){
+		 	 		if (strcmp(buffer, "stat") == 0){
 				gfx_ShiftUp(8);	
 				gfx_SetColor(255);
 				gfx_FillRectangle(11,210,300,11);
+				gfx_FillRectangle(0,0,320,9);
 				gfx_PrintStringXY(">", 15,212);
 				gfx_SetColor(0);
 				gfx_Rectangle(10,10,300,211);
 				memset(buffer, 0, sizeof(buffer));
-				
-	i = 0;
-	}
+				i = 0;
+			}
+			gfx_SetColor(255);
+		 memset(buffer, 0, sizeof(buffer));
+		 i = 0;
+		 gfx_FillRectangle(11,210,300,11);
+		 gfx_PrintStringXY(">", 15,212);
+		 gfx_SetColor(0);
+		gfx_Rectangle(10,10,300,211);
+		}
 }
-}
-
-return 0;
 gfx_End();
+return 0;
 }
