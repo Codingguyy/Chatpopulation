@@ -11,7 +11,7 @@ uint8_t key, i = 0;
 char buffer[50];
 buffer[i] = 0;
  
-
+uint8_t rand;
 	uint24_t people;
 	people = 100;
 
@@ -29,19 +29,42 @@ while (!(key == sk_Clear)){
 		gfx_PrintStringXY(buffer, 23,211);
     }
 	 if (key == sk_Enter){
+		 gfx_SetColor(255);
 		 	 		if (strcmp(buffer, "stat") == 0){
 				gfx_ShiftUp(24);
-				gfx_PrintStringXY(">", 15,200);
-				gfx_SetColor(255);
+				gfx_Line(10,196,310,196);
+				gfx_PrintStringXY(">", 15,197);
 				gfx_FillRectangle(0,0,320,9);
-				gfx_SetTextXY(23, 200);
+				gfx_PrintStringXY("people:", 23,197);
+				gfx_SetTextXY(79, 197);
 				gfx_PrintUInt(people, 0);
+			}
+if (strcmp(buffer, "reset") == 0){
+gfx_ShiftUp(24);
+gfx_Line(10,196,310,196);
+gfx_PrintStringXY(">", 15,200);
+gfx_FillRectangle(0,0,320,9);
+				gfx_PrintStringXY("civilization successfully destroyed", 23,200);
+				people = 100;
+
+			}
+if (strcmp(buffer, "kill") == 0){
+gfx_ShiftUp(24);
+gfx_Line(10,196,310,196);
+gfx_PrintStringXY(">", 15,200);
+gfx_FillRectangle(0,0,320,9);
+ rand = randInt(1, 10);
+ people = people - rand;
+ 				gfx_SetTextXY(119, 200);
+				gfx_PrintUInt(rand, 0);
+				gfx_PrintStringXY("people killed", 23,200);
+
 			}
 			gfx_SetColor(255);
 		 memset(buffer, 0, sizeof(buffer));
 		 i = 0;
 		 gfx_Line(10,196,310,196);
-		 gfx_FillRectangle(15,212,305,8);
+		 gfx_FillRectangle(10,210,300,11);
 		 gfx_PrintStringXY(">", 15,212);
 		 gfx_SetColor(0);
 		gfx_Rectangle(10,10,300,211);
