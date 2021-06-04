@@ -13,7 +13,7 @@ buffer[i] = 0;
  
 
 	uint24_t people;
-	people = 3;
+	people = 100;
 
     gfx_Begin();
 
@@ -30,24 +30,32 @@ while (!(key == sk_Clear)){
     }
 	 if (key == sk_Enter){
 		 	 		if (strcmp(buffer, "stat") == 0){
-				gfx_ShiftUp(8);	
+				gfx_ShiftUp(24);
+				gfx_PrintStringXY(">", 15,200);
 				gfx_SetColor(255);
-				gfx_FillRectangle(11,210,300,11);
 				gfx_FillRectangle(0,0,320,9);
-				gfx_PrintStringXY(">", 15,212);
-				gfx_SetColor(0);
-				gfx_Rectangle(10,10,300,211);
-				memset(buffer, 0, sizeof(buffer));
-				i = 0;
+				gfx_SetTextXY(23, 200);
+				gfx_PrintUInt(people, 0);
 			}
 			gfx_SetColor(255);
+		 memset(buffer, 0, sizeof(buffer));
+		 i = 0;
+		 gfx_Line(10,196,310,196);
+		 gfx_FillRectangle(15,212,305,8);
+		 gfx_PrintStringXY(">", 15,212);
+		 gfx_SetColor(0);
+		gfx_Rectangle(10,10,300,211);
+		}
+	if (key == sk_Del){
+				gfx_SetColor(255);
 		 memset(buffer, 0, sizeof(buffer));
 		 i = 0;
 		 gfx_FillRectangle(11,210,300,11);
 		 gfx_PrintStringXY(">", 15,212);
 		 gfx_SetColor(0);
 		gfx_Rectangle(10,10,300,211);
-		}
+	}
+
 }
 gfx_End();
 return 0;
